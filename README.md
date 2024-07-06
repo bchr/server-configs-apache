@@ -1,6 +1,6 @@
 # [Apache Server Configs](https://github.com/h5bp/server-configs-apache)
 
-[![Test](https://github.com/h5bp/server-configs-apache/workflows/server/badge.svg)](https://github.com/h5bp/server-configs-apache/actions?query=workflow%3Aserver)
+[![Server CI](https://github.com/h5bp/server-configs-apache/actions/workflows/server.yml/badge.svg)](https://github.com/h5bp/server-configs-apache/actions/workflows/server.yml)
 
 **Apache Server Configs** is a collection of configuration snippets that can help
 your server improve the website's performance and security, while also
@@ -301,6 +301,25 @@ snippet, change the `disable` keyword to `enable`:
 enable "h5bp/rewrites/rewrite_http_to_https.conf"
 ```
 
+##### Controlling the size of the output .htaccess file
+
+The default partials contain significant numbers of comment lines, which
+contain valuable guidance about how and why to use the setting as well
+as web references. However, some may feel that the size of the resulting
+`.htaccess` file is too large.
+
+The special keyword `no-partials-comments` can be used to prevent
+comment lines from being copied out of the partials into `.htaccess`.
+
+> [!Note]
+> This keyword does not control comments created by the build
+> script (such as `title` or `disabled` directives), only those that
+> are in the source partials files.
+
+```apache
+no-partials-comments
+```
+
 ##### Adding custom modules
 
 Imagine you're passing all requests to non-existing files to your
@@ -366,7 +385,7 @@ path/to/server-configs-apache/bin/build.sh ./.htaccess ~/htaccess.conf
 
 ## Support
 
-* Apache v**2.4.10**+
+* Apache v**2.4.17**+
 
 
 ## Contributing
